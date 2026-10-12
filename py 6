@@ -1,0 +1,156 @@
+import os
+from datetime import datetime
+
+class JournalManager:
+    def __init__(self, filename="journal.txt"):
+        self.filename = filename
+
+    def create_file(self):
+        try:
+            with open(self.filename, "x", encoding="utf-8") as file:
+                file.write("")
+            print("Journal file created successfully!")
+        except FileExistsError:
+            print("Journal file already exists.")
+        except OSError as error:
+            print(f"File error: {error}")
+
+    def add_entry(self):
+        text = input("\nEnter your journal entry: ").strip()
+
+        if not text:
+            print("Entry cannot be empty.")
+            return
+
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        entry = f"[{timestamp}]\n{text}\n\n"
+
+        try:
+            with open(self.filename, "a", encoding="utf-8") as file:
+                file.write(entry)
+            print("Entry added successfully!")
+        except OSError as error:
+            print(f"File error: {error}")
+
+    def view_entries(self):
+        try:
+            with open(self.filename, "r", encoding="utf-8") as file:
+                content = file.read()
+
+            if not content.strip():
+                print("\nNo journal entries found.")
+            else:
+                print("\nYour Journal Entries:")
+                print("-" * 40)
+                print(content)
+
+        except FileNotFoundError:
+            print("Journal file not found. Please create the file first.")
+        except OSError as error:
+            print(f"File error: {error}")
+
+    def search_entries(self):
+        keyword = input("\nEnter a keyword or date to search: ").strip()
+
+        if not keyword:
+            print("Search text cannot be empty.")
+            return
+
+        try:
+            with open(self.filename, "r", encoding="utf-8") as file:
+                content = file.read()
+
+            entries = [
+                entry for entry in content.strip().split("\n\n")
+                if entry.strip()
+            ]
+
+            matches = [
+                entry for entry in entries
+                if keyword.casefold() in entry.casefold()
+            ]
+
+            if matches:
+                print("\nMatching Entries:")
+                print("-" * 40)
+                for entry in matches:
+                    print(entry)
+                    print()
+            else:
+                print("No matching entries found.")
+
+        except FileNotFoundError:
+            print("Journal file not found. Please create the file first.")
+        except OSError as error:
+            print(f"File error: {error}")
+
+    def delete_entries(self):
+        try:
+            with open(self.filename, "w", encoding="utf-8") as file:
+                file.write("")
+            print("All journal entries deleted successfully!")
+        except OSError as error:
+            print(f"File error: {error}")
+
+    def overwrite_entries(self):
+        text = input("\nEnter new journal content: ").strip()
+
+        try:
+            with open(self.filename, "w", encoding="utf-8") as file:
+                if text:
+                    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    file.write(f"[{timestamp}]\n{text}\n")
+                print("Journal file updated successfully!")
+        except OSError as error:
+            print(f"File error: {error}")
+
+def main():
+    journal = JournalManager()
+
+    print("\nWelcome to Personal Journal Manager!")
+
+    while True:
+        print("\nPlease select an option:")
+        print("1. Create Journal File ")
+        print("2. Add a New Entry ")
+        print("3. View All Entries")
+        print("4. Search for an Entry")
+        print("5. Delete All Entries ")
+        print("6. Overwrite Journal File")
+        print("7. Exit")
+
+        try:
+            choice = input("\nEnter your choice: ").strip()
+
+            match choice:
+                case "1":
+                    journal.create_file()
+                case "2":
+                    journal.add_entry()
+                case "3":
+                    journal.view_entries()
+                case "4":
+                    journal.search_entries()
+                case "5":
+                    confirm = input(
+                        "Are you sure you want to delete all entries? (yes/no): "
+                    ).strip().lower()
+
+                    if confirm == "yes":
+                        journal.delete_entries()
+                    else:
+                        print("Deletion cancelled.")
+                case "6":
+                    journal.overwrite_entries()
+                case "7":
+                    print("Thank you for using Personal Journal Manager. Goodbye!")
+                    break
+                case _:
+                    print("Invalid option. Please select a valid option.")
+
+        except (KeyboardInterrupt, EOFError):
+            print("\nProgram terminated.")
+            break
+
+if __name__ == "__main__":
+    main()
