@@ -116,67 +116,85 @@ flowchart LR
 |`"r"`|View and search    |Reads existing content without changing it.                       |
 |`"w"`|Delete or overwrite|Clears existing content before writing new content.               |
 
-
-## output sample
-
+## 🎨 Output — Flowchart
 ```mermaid
 flowchart TD
     A([Start]) --> B[Welcome Message]
     B --> C[Display Main Menu]
     C --> D[/Enter Your Choice/]
     D --> E{Select Option}
-
     E -->|1| F[Create Journal File]
     F --> F1[Display Success Message]
     F1 --> C
-
     E -->|2| G[Enter Journal Entry]
     G --> G1[Add Entry to File]
     G1 --> G2[Display Success Message]
     G2 --> C
-
     E -->|3| H[Read Journal File]
     H --> H1[Display All Entries]
     H1 --> C
-
     E -->|4| I[Enter Keyword or Date]
     I --> I1[Search Journal Entries]
     I1 --> I2[Display Search Results]
     I2 --> C
-
     E -->|5| J[Confirm Deletion]
     J --> K{Confirmation}
     K -->|Yes| L[Delete All Entries]
     K -->|No| C
     L --> C
-
     E -->|6| M[Enter New Journal Content]
     M --> M1[Overwrite Journal File]
     M1 --> M2[Display Success Message]
     M2 --> C
-
-
-
-
     E -->|7| N[Display Goodbye Message]
     N --> O([End])
-
     E -->|Invalid Choice| P[Display Error Message]
     P --> C
+    style A fill:#D5F5E3,stroke:#229954,stroke-width:2px,color:#145A32
+    style B fill:#D6EAF8,stroke:#2874A6,color:#154360
+    style C fill:#D6EAF8,stroke:#2874A6,color:#154360
+    style D fill:#FCF3CF,stroke:#D4AC0D,color:#7D6608
+    style E fill:#E8DAEF,stroke:#884EA0,stroke-width:2px,color:#512E5F
+    style F fill:#D5F5E3,stroke:#229954,color:#145A32
+    style F1 fill:#D5F5E3,stroke:#229954,color:#145A32
+    style G fill:#D6EAF8,stroke:#2874A6,color:#154360
+    style G1 fill:#D6EAF8,stroke:#2874A6,color:#154360
+    style G2 fill:#D5F5E3,stroke:#229954,color:#145A32
+    style H fill:#D6EAF8,stroke:#2874A6,color:#154360
+    style H1 fill:#D5F5E3,stroke:#229954,color:#145A32
+    style I fill:#FCF3CF,stroke:#D4AC0D,color:#7D6608
+    style I1 fill:#D6EAF8,stroke:#2874A6,color:#154360
+    style I2 fill:#D5F5E3,stroke:#229954,color:#145A32
+    style J fill:#FADBD8,stroke:#C0392B,color:#78281F
+    style K fill:#E8DAEF,stroke:#884EA0,color:#512E5F
+    style L fill:#F5B7B1,stroke:#C0392B,color:#78281F
+    style M fill:#D6EAF8,stroke:#2874A6,color:#154360
+    style M1 fill:#D6EAF8,stroke:#2874A6,color:#154360
+    style M2 fill:#D5F5E3,stroke:#229954,color:#145A32
+    style N fill:#D5F5E3,stroke:#229954,color:#145A32
+    style O fill:#D5F5E3,stroke:#229954,stroke-width:2px,color:#145A32
+    style P fill:#FADBD8,stroke:#C0392B,color:#78281F
+```
+
+## 📸 Output Screenshot
+
+ <img width="1901" height="2317" alt="op 6 ss" src="https://github.com/user-attachments/assets/7ffa29a6-cd29-4b53-aa74-5031b1ebfa6d" />
 
 
-📸 Output Screenshot
+## 🎥 Demo Video
 
-<p>
-  <a href="YOUR_SCREENSHOT_LINK_HERE">
-    <img src="https://img.shields.io/badge/View-Output%20Screenshots-green?style=for-the-badge&logo=github" alt="View Output Screenshots">
-  </a>
+
+
+
+⸻
+
+<h3 align="center">👩‍💻 Created by Khushi Chaudhary</h3>
+<p align="center">
+  💖 Thank you for visiting my project!<br>
+  Made with ❤️ and Python 🐍
+</p>
+<p align="center">
+  ✨ Keep Learning • Keep Creating • Keep Growing ✨
 </p>
 
-🎥 Demo Video
-
-<p>
-  <a href="YOUR_DEMO_VIDEO_LINK_HERE">
-    <img src="https://img.shields.io/badge/Watch-Demo%20Video-red?style=for-the-badge&logo=youtube" alt="Watch Demo Video">
-  </a>
-</p>
+⸻
